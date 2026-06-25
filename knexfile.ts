@@ -64,6 +64,9 @@ const config: { [key: string]: Knex.Config } = {
       user: process.env.DB_USER || 'postgres',
       password: process.env.DB_PASSWORD || '1234',
       database: process.env.DB_NAME || 'PETS_API',
+      ssl: process.env.DB_HOST?.includes('supabase')
+      ? { rejectUnauthorized: false }
+      : false,
     },
     pool: {
       min: 2,
